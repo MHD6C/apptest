@@ -20,6 +20,17 @@ st.markdown(
         .css-18e3th9 {
             background-color: rgba(255, 255, 255, 0.1) !important;
         }
+        .stButton>button {
+            background-color: #ff5733;
+            color: white;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+        }
+        .stButton>button:hover {
+            background-color: #c70039;
+        }
     </style>
     """,
     unsafe_allow_html=True
@@ -88,7 +99,7 @@ option = st.sidebar.radio("Afficher les données de :", ["BeautifulSoup", "Web S
 
 if option == "BeautifulSoup":
     category = st.sidebar.radio("Choisissez une catégorie", ["Vêtements", "Chaussures"])
-    num_pages = st.sidebar.slider("Nombre de pages à scraper", min_value=1, max_value=120, value=3)
+    num_pages = st.sidebar.slider("Nombre de pages à scraper", min_value=1, max_value=10, value=3)
     if st.sidebar.button("Lancer le scraping"):
         with st.spinner("Scraping en cours..."):
             df = scrape_vetements(num_pages) if category == "Vêtements" else scrape_chaussures(num_pages)
